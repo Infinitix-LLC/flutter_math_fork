@@ -1,10 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_math_fork/ast.dart';
-import 'package:flutter_math_fork/flutter_math.dart';
-import 'package:flutter_math_fork/src/ast/tex_break.dart';
-import 'package:flutter_math_fork/tex.dart';
+import 'package:plusfinity_flutter_math/flutter_math.dart';
+import 'package:plusfinity_flutter_math/src/ast/tex_break.dart';
+import 'package:plusfinity_flutter_math/tex.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'helper.dart';

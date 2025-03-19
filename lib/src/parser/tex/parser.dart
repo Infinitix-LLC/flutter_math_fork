@@ -25,7 +25,7 @@ import 'dart:collection';
 import 'dart:ui';
 
 import 'package:collection/collection.dart';
-import 'package:flutter_math_fork/src/ast/nodes/text_node.dart';
+import 'package:plusfinity_flutter_math/src/ast/nodes/text_node.dart';
 
 import '../../ast/nodes/multiscripts.dart';
 import '../../ast/nodes/over.dart';
