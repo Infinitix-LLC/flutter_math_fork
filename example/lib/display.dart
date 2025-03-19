@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_math_fork/flutter_math.dart';
+import 'package:plusfinity_flutter_math/flutter_math.dart';
 
 class DisplayMath extends StatelessWidget {
   final String expression;

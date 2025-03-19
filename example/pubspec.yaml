@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_math_fork:
+  plusfinity_flutter_math:
     path: ../
 
   provider: any
