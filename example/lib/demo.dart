@@ -8,7 +8,8 @@ class DemoPage extends StatelessWidget {
         child: Container(
           constraints: BoxConstraints(maxWidth: 800),
           child: ChangeNotifierProvider(
-            create: (context) => TextEditingController(),
+            create: (context) =>
+                TextEditingController(text: r'\sqrt{x^2}\text{আমার নাম সোহাগ}'),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.stretch,

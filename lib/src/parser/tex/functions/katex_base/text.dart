@@ -39,9 +39,26 @@ const _textEntries = {
   )
 };
 GreenNode _textHandler(TexParser parser, FunctionContext context) {
-  final body = parser.parseArgNode(mode: Mode.text, optional: false)!;
+  var node = context.token?.text;
+  print(node);
+  final GreenNode? body;
+  if (node == r'\text') {
+    body = parser.parseTextArgNode(mode: Mode.text, optional: false)!;
+  } else {
+    body = parser.parseArgNode(mode: Mode.text, optional: false)!;
+  }
   final fontOptions = texTextFontOptions[context.funcName];
-  if (fontOptions == null) return body;
+  if (fontOptions == null) {
+    print("This is the body: $body");
+    if (body is TextNode) {
+      return EquationRowNode(
+        children: [
+          body,
+        ],
+      );
+    }
+  }
+  // if (fontOptions == null) return body;
   return StyleNode(
     optionsDiff: OptionsDiff(textFontOptions: fontOptions),
     children: body.expandEquationRow(),

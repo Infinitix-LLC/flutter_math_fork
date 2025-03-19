@@ -25,6 +25,7 @@ import 'dart:collection';
 import 'dart:ui';
 
 import 'package:collection/collection.dart';
+import 'package:flutter_math_fork/src/ast/nodes/text_node.dart';
 
 import '../../ast/nodes/multiscripts.dart';
 import '../../ast/nodes/over.dart';
@@ -583,6 +584,46 @@ class TexParser {
     // }
     // final res = this.parseUrlGroup(optional: optional);
     throw UnimplementedError();
+  }
+
+  GreenNode? parseTextArgNode({required Mode? mode, required bool optional}) {
+    currArgParsingContext.newArgument(optional: optional);
+    final i = currArgParsingContext.currArgNum;
+    final consumeSpaces =
+        (i > 0 && !optional) || (i == 0 && !optional && this.mode == Mode.math);
+    // if (consumeSpaces) {
+    //   this.consumeSpaces();
+    // }
+    if (mode == Mode.text) {
+      print("mode is text");
+      var curr = this.fetch().text;
+      this.consume();
+      String text = '';
+      List<String> texts = [curr];
+      while (texts.isNotEmpty && curr != 'EOF') {
+        curr = this.fetch().text;
+        this.consume();
+        if (curr == '{') {
+          texts.add(curr);
+        } else if (curr == '}') {
+          texts.removeLast();
+        }
+        if (texts.isNotEmpty) {
+          text += curr;
+        }
+      }
+      print("text is: $text");
+      return TextNode(symbol: text, mode: Mode.text);
+    }
+    final res = this.parseGroup(
+      currArgParsingContext.name,
+      optional: optional,
+      greediness: currArgParsingContext.funcData.greediness,
+      mode: mode,
+      consumeSpaces: consumeSpaces,
+    );
+    _assertOptionalBeforeReturn(res, optional: optional);
+    return res;
   }
 
   GreenNode? parseArgNode({required Mode? mode, required bool optional}) {

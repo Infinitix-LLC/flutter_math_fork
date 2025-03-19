@@ -1,5 +1,7 @@
 library katex_base;
 
+import 'package:flutter_math_fork/src/ast/nodes/text_node.dart';
+
 import '../../../ast/nodes/accent.dart';
 import '../../../ast/nodes/accent_under.dart';
 import '../../../ast/nodes/enclosure.dart';

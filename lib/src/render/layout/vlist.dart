@@ -335,9 +335,10 @@ class RenderRelativeWidthColumn extends RenderBox
       case CrossAxisAlignment.start:
       case CrossAxisAlignment.baseline:
       case CrossAxisAlignment.stretch: // TODO
-      default:
-        return width;
+      // default:
+      // return width;
     }
+    return width;
   }
 
   @override
